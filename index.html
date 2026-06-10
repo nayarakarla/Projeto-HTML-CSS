@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --dark-brown: #3e2723;
+            --alert-red: #d32f2f;
+            --bg-light: #f1f8e9;
+            --text-dark: #212121;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-brown));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-green);
+        }
+
+        h2 {
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        .range-values {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Painel de Resultados */
+        .metric-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric h3 {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .status-indicator {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .status-equilibrio {
+            background-color: #e8f5e9;
+            color: var(--primary-green);
+            border: 2px solid var(--light-green);
+        }
+
+        .status-alerta {
+            background-color: #ffebee;
+            color: var(--alert-red);
+            border: 2px solid var(--alert-red);
+        }
+
+        .feedback-text {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.85rem;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simulador AgroSustentável</h1>
+        <p>"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"</p>
+        <span class="badge">Agrinho 2026 • Subcategoria 3 • Nível 4</span>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2>⚙️ Parâmetros de Manejo</h2>
+            
+            <div class="control-group">
+                <label for="producao">Intensidade da Produção Agrícola</label>
+                <input type="range" id="producao" min="10" max="100" value="50" oninput="calcularEquilibrio()">
+                <div class="range-values">
+                    <span>Subsistência (10%)</span>
+                    <span>Intensiva (100%)</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="tecnologia">Investimento em Tecnologias Verdes</label>
+                <input type="range" id="tecnologia" min="0" max="100" value="30" oninput="calcularEquilibrio()">
+                <div class="range-values">
+                    <span>Tradicional (0%)</span>
+                    <span>Alta Tech/Bio (100%)</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="preservacao">Área de Preservação / APP</label>
+                <input type="range" id="preservacao" min="20" max="80" value="20" oninput="calcularEquilibrio()">
+                <div class="range-values">
+                    <span>Mínimo Legal (20%)</span>
+                    <span>Máxima Proteção (80%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Indicadores de Impacto</h2>
+            
+            <div class="metric-box">
+                <div class="metric">
+                    <h3>Retorno Econômico</h3>
+                    <div id="val-economico" class="metric-value">R$ 0</div>
+                </div>
+                <div class="metric">
+                    <h3>Saúde do Solo/Água</h3>
+                    <div id="val-ambiental" class="metric-value">0%</div>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+            <h3>Diagnóstico do Ecossistema:</h3>
+            <div id="status-painel" class="status-indicator status-equilibrio">
+                Equilibrado
+            </div>
+            
+            <p id="feedback" class="feedback-text">
+                Calculando dados da propriedade...
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Projeto Desenvolvido para o Concurso Agrinho Paraná 2026 - Robótica e Programação</p>
+    </footer>
+
+    <script>
+        function calcularEquilibrio() {
+            // Captura os valores dos inputs do HTML
+            const prod = parseFloat(document.getElementById('producao').value);
+            const tec = parseFloat(document.getElementById('tecnologia').value);
+            const pres = parseFloat(document.getElementById('preservacao').value);
+
+            // LÓGICA DE NEGÓCIO (Cálculo dos Impactos)
+            // O retorno econômico cresce com a produção e tecnologia, mas é penalizado se o solo esgotar
+            let ganhoPotencial = (prod * 1.5) + (tec * 1.2);
+            
+            // O impacto ambiental sofre com alta produção, mas melhora muito com tecnologia e preservação
+            let saudeAmbiental = 100 - (prod * 0.8) + (tec * 0.5) + (pres * 0.6);
+            
+            // Limitadores matemáticos (para não passar de 100% ou cair abaixo de 0%)
+            saudeAmbiental = Math.min(Math.max(saudeAmbiental, 0), 100);
+            
+            // Penalidade econômica se a saúde do solo for menor que 30% (degradação severa)
+            if (saudeAmbiental < 30) {
+                ganhoPotencial = ganhoPotencial * (saudeAmbiental / 100);
+            }
+            
+            // Renderização dos resultados na tela
+            document.getElementById('val-economico').innerText = `R$ ${(ganhoPotencial * 120).toFixed(0)}`;
+            document.getElementById('val-ambiental').innerText = `${saudeAmbiental.toFixed(0)}%`;
+
+            // Elementos de Feedback dinâmico
+            const painelStatus = document.getElementById('status-painel');
+            const textoFeedback = document.getElementById('feedback');
+
+            // Validação das regras do tema (Equilíbrio)
+            if (saudeAmbiental >= 60 && ganhoPotencial >= 70) {
+                painelStatus.innerText = "🌱 Agro Forte & Sustentável";
+                painelStatus.className = "status-indicator status-equilibrio";
+                textoFeedback.innerText = "Excelente! Sua propriedade alcançou o equilíbrio perfeito. A alta produtividade aliada a técnicas verdes e preservação garante lucro hoje e recursos para o futuro.";
+            } else if (saudeAmbiental < 40) {
+                painelStatus.innerText = "⚠️ Colapso Ambiental Defasado";
+                painelStatus.className = "status-indicator status-alerta";
+                textoFeedback.innerText = "Alerta! A produção intensiva sem tecnologia e sem área de preservação está destruindo os recursos naturais. A longo prazo, a fazenda ficará improdutiva.";
+            } else if (ganhoPotencial < 50) {
+                painelStatus.innerText = "📉 Baixa Eficiência Econômica";
+                painelStatus.className = "status-indicator status-alerta";
+                textoFeedback.innerText = "O meio ambiente está protegido, mas o retorno financeiro está baixo. Experimente investir mais em Tecnologias Verdes (como bioinsumos e precisão) para aumentar a eficiência sem agredir a natureza.";
+            } else {
+                painelStatus.innerText = "⚖️ Em Ajuste de Equilíbrio";
+                painelStatus.className = "status-indicator status-equilibrio";
+                textoFeedback.innerText = "A fazenda está operando em nível aceitável, mas pode melhorar. Tente aumentar a tecnologia ou ajustar a produção para maximizar ambos os indicadores.";
+            }
+        }
+
+        // Executa a função uma vez ao carregar a página para inicializar os dados
+        window.onload = calcularEquilibrio;
+    </script>
+</body>
+</html>
